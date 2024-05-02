@@ -15,17 +15,13 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
-            // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            if (true)
-            {
+            var quantidadeHospede = hospedes.Count();
+            var capacidadeSuite = Suite.Capacidade;
+            var suiteSuportaQuantidade = capacidadeSuite >= quantidadeHospede;
+            if (suiteSuportaQuantidade)
                 Hospedes = hospedes;
-            }
             else
-            {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
-            }
+                throw new Exception("Capacidade da suite menor que o número de hóspedes recebido");
         }
 
         public void CadastrarSuite(Suite suite)
@@ -35,23 +31,20 @@ namespace DesafioProjetoHospedagem.Models
 
         public int ObterQuantidadeHospedes()
         {
-            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
-            return 0;
+            var quandidadeHospede = Hospedes.Count();
+            return quandidadeHospede;
         }
 
         public decimal CalcularValorDiaria()
         {
-            // TODO: Retorna o valor da diária
-            // Cálculo: DiasReservados X Suite.ValorDiaria
-            // *IMPLEMENTE AQUI*
-            decimal valor = 0;
+            var valorDiaria = Suite.ValorDiaria;
+            var diasReservados = DiasReservados;
+            decimal valor = DiasReservados * valorDiaria;
 
-            // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
-            // *IMPLEMENTE AQUI*
-            if (true)
+            if (diasReservados >= 10)
             {
-                valor = 0;
+                var desconto = 0.1m;
+                valor = valor - (valor * desconto);
             }
 
             return valor;
